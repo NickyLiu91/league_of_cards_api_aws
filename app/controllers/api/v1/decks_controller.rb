@@ -1,21 +1,14 @@
 class Api::V1::DecksController < ApplicationController
   before_action :find_deck, only: [:show]
+  # validates :name, uniqueness: { case_sensitive: false }
 
   def index
     @decks = Deck.all
-    render json: @decks.to_json(only: [:id, :name],
-        include: [player: {only: [:id, :name]},
-                  cards: {only: [:id, :name, :title, :role, :rarity,
-                  :attack, :magic, :defense, :description, :quantity, :key, :image]}]
-      )
+    render json: @decks
   end
 
   def show
-    render json: @deck.to_json(only: [:id, :name],
-        include: [player: {only: [:id, :name]},
-                  cards: {only: [:id, :name, :title, :role, :rarity,
-                  :attack, :magic, :defense, :description, :quantity, :key, :image]}]
-      )
+    render json: @deck
   end
 
   def new
@@ -39,7 +32,17 @@ class Api::V1::DecksController < ApplicationController
     @player = Player.find(params[:player_id])
     @decks = @player.decks
     render json: @decks.to_json(only: [:id, :name],
-        include: [player: {only: [:id, :name]},
+        include: [player: {only: [:id, :name, :computer]},
+                  cards: {only: [:id, :name, :title, :role, :rarity,
+                  :attack, :magic, :defense, :description, :quantity, :key]}]
+      )
+  end
+
+  def player_decks_show
+    @player = Player.find(params[:player_id])
+    @deck = @player.decks.find(params[:deck_id])
+    render json: @deck.to_json(only: [:id, :name],
+        include: [
                   cards: {only: [:id, :name, :title, :role, :rarity,
                   :attack, :magic, :defense, :description, :quantity, :key]}]
       )
@@ -49,7 +52,7 @@ class Api::V1::DecksController < ApplicationController
     @card = Card.find(params[:card_id])
     @decks = @card.decks
     render json: @decks.to_json(only: [:id, :name],
-        include: [player: {only: [:id, :name]},
+        include: [player: {only: [:id, :name, :computer]},
                   cards: {only: [:id, :name, :title, :role, :rarity,
                   :attack, :magic, :defense, :description, :quantity, :key]}]
       )
