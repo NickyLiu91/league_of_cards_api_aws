@@ -1,12 +1,12 @@
 class Api::V1::DeckcardsController < ApplicationController
-  before_action :find_deckcard, only: [:show]
+  before_action :find_deckcard, only: [:show, :update, :destroy]
 
   def index
     @deckcards = Deckcard.all
     render json: @deckcards.to_json(only: [:id, :deck_id, :card_id],
         include: [deck: {only: [:id, :name]},
                   card: {only: [:id, :name, :title, :role, :rarity,
-                  :attack, :magic, :defense, :description, :quantity, :key, :image]}]
+                  :attack, :magic, :defense, :description, :quantity, :key, :image, :effect, :cardtype]}]
       )
   end
 
@@ -14,7 +14,7 @@ class Api::V1::DeckcardsController < ApplicationController
     render json: @deckcard.to_json(only: [:id, :deck_id, :card_id],
       include: [deck: {only: [:id, :name]},
                 card: {only: [:id, :name, :title, :role, :rarity,
-                :attack, :magic, :defense, :description, :quantity, :key, :image]}]
+                :attack, :magic, :defense, :description, :quantity, :key, :image, :effect, :cardtype]}]
       )
   end
 
@@ -31,12 +31,12 @@ class Api::V1::DeckcardsController < ApplicationController
   end
 
   def update
-    @deckcard = Deckcard.find_by(id: params[:id])
+    # @deckcard = Deckcard.find_by(id: params[:id])
     @deckcard.update(deckcard_params)
   end
 
   def destroy
-    @deckcard = Deckcard.find_by(id: params[:id])
+    # @deckcard = Deckcard.find_by(id: params[:id])
     @deckcard.destroy
   end
 

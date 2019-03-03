@@ -1,7 +1,6 @@
 class Api::V1::PlayersController < ApplicationController
+  # skip_before_action :authorized, only: %i[create], raise: false
   before_action :find_player, only: [:show]
-  # has_secure_password
-  # validates :username, uniqueness: { case_sensitive: false }
 
   def index
     @players = Player.all
@@ -19,7 +18,7 @@ class Api::V1::PlayersController < ApplicationController
   def create
     @player = Player.create(player_params)
     # if @player.valid?
-    #   render json: { player: Player.new(@player) }, status: :created
+    #   render json: { player: PlayerSerializer.new(@player) }, status: :created
     # else
     #   render json: { error: 'failed to create user' }, status: :not_acceptable
     # end
@@ -47,7 +46,7 @@ class Api::V1::PlayersController < ApplicationController
   private
 
   def player_params
-    params.require(:player).permit(:name, :image, :computer, :image, :password_digest)
+    params.require(:player).permit(:name, :image, :computer, :image, :password_digest, :gold, :level, :dialogue, :defeated_id, :background, :preduel, :completed)
   end
 
   def find_player

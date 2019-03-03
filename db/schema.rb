@@ -10,30 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_30_143440) do
+ActiveRecord::Schema.define(version: 2019_01_05_075823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "allcards", force: :cascade do |t|
+    t.integer "key"
+    t.string "name"
+    t.string "title"
+    t.string "role"
+    t.string "rarity"
+    t.string "cardtype"
+    t.string "effect"
+    t.integer "attack"
+    t.integer "magic"
+    t.integer "defense"
+    t.string "description"
+    t.string "image"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "cards", force: :cascade do |t|
     t.string "name"
     t.string "title"
     t.string "role"
     t.string "description"
-    t.integer "rarity"
+    t.string "image"
+    t.string "rarity"
+    t.string "cardtype"
+    t.string "effect"
     t.integer "attack"
     t.integer "magic"
     t.integer "defense"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "quantity"
     t.integer "key"
-    t.string "image"
-  end
-
-  create_table "collections", force: :cascade do |t|
     t.integer "player_id"
-    t.integer "card_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -54,11 +68,18 @@ ActiveRecord::Schema.define(version: 2018_11_30_143440) do
 
   create_table "players", force: :cascade do |t|
     t.string "name"
+    t.string "image"
+    t.string "password_digest"
+    t.string "level"
+    t.string "background"
+    t.string "preduel"
+    t.integer "dialogue"
+    t.integer "gold"
+    t.integer "defeated_id"
+    t.boolean "completed"
+    t.boolean "computer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
-    t.boolean "computer"
-    t.string "password_digest"
   end
 
 end

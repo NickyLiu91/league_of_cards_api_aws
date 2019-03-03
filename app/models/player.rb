@@ -1,6 +1,7 @@
 class Player < ApplicationRecord
-  has_one :collection
+  has_secure_password
+  validates :name, uniqueness: {case_sensitive: false}
   has_many :decks
-  has_many :cards, through: :collection
+  has_many :cards
   # has_many :deckcards, through: :collection
 end
