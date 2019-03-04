@@ -19,9 +19,7 @@ Rails.application.configure do
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
-      'Cache-Control' => "public, max-age=#{2.days.to_i}",
-      'Access-Control-Allow-Origin' => 'https://xxxxxxxxxxxxxx.cloudfront.net/',
-      'Access-Control-Allow-Origin' => %w{GET OPTIONS}.join(",")
+      'Cache-Control' => "public, max-age=#{2.days.to_i}"
     }
   else
     config.action_controller.perform_caching = false
