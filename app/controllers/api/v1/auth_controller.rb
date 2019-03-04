@@ -1,5 +1,5 @@
 class Api::V1::AuthController < ApplicationController
-  skip_before_action :authorized, only: %i[create]
+  # skip_before_action :authorized, only: %i[create]
 
   def create
     @player = Player.find_by(name: player_login_params[:name])
