@@ -2663,7 +2663,7 @@ requiem = Allcard.create(
   name: "Requiem",
   cardtype: "Ability",
   rarity: "Diamond",
-  description: "Destroy every champion on your opponent's side of the field",
+  description: "Destroy every champion on your opponent's side of the field.",
   effect: "props.requiem(props.selectedCard)",
   image: "Requiem.png",
   quantity: 0
@@ -2673,7 +2673,7 @@ noxianGuillotine = Allcard.create(
   name: "Noxian Guillotine",
   cardtype: "Ability",
   rarity: "Diamond",
-  description: "Destroy any champion on your opponent's side of the field",
+  description: "Destroy any champion on your opponent's side of the field.",
   effect: "props.noxianGuillotine(props.selectedCard)",
   image: "NoxianGuillotine.png",
   quantity: 0
@@ -2683,7 +2683,7 @@ demacianJustice = Allcard.create(
   name: "Demacian Justice",
   cardtype: "Ability",
   rarity: "Platinum",
-  description: "Destroy the champion with the highest power on your opponent's side of the field",
+  description: "Destroy the champion with the highest power on your opponent's side of the field.",
   effect: "props.demacianJustice(props.selectedCard)",
   image: "DemacianJustice.png",
   quantity: 0
@@ -2693,7 +2693,7 @@ deathMark = Allcard.create(
   name: "Death Mark",
   cardtype: "Ability",
   rarity: "Gold",
-  description: "Destroy the champion with the highest attack on your opponent's side of the field",
+  description: "Destroy the champion with the highest attack on your opponent's side of the field.",
   effect: "props.deathMark(props.selectedCard)",
   image: "DeathMark.png",
   quantity: 0
@@ -2703,7 +2703,7 @@ primordialBurst = Allcard.create(
   name: "Primordial Burst",
   cardtype: "Ability",
   rarity: "Gold",
-  description: "Destroy the champion with the highest magic on your opponent's side of the field",
+  description: "Destroy the champion with the highest magic on your opponent's side of the field.",
   effect: "props.primordialBurst(props.selectedCard)",
   image: "PrimordialBurst.png",
   quantity: 0
@@ -2713,7 +2713,7 @@ silverBolts = Allcard.create(
   name: "Silver Bolts",
   cardtype: "Ability",
   rarity: "Silver",
-  description: "Destroy the champion with the highest defense on your opponent's side of the field",
+  description: "Destroy the champion with the highest defense on your opponent's side of the field.",
   effect: "props.silverBolts(props.selectedCard)",
   image: "SilverBolts.png",
   quantity: 0
